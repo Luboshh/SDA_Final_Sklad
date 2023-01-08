@@ -2,3 +2,5 @@
 Naše Djando aplikace
 
 Team:
+
+Lubomír
