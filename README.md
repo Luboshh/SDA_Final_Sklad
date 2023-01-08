@@ -2,8 +2,6 @@
 Naše Djando aplikace
 
 Team:
-
-
-Lubomír
-sarka
-
+Lubomír, 
+Sarka , 
+Martin, 
