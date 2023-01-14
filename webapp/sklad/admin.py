@@ -1,18 +1,80 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
-from sklad.models import Item, Item_on_stock, Item_for_hardware, Hardware_type
+from sklad.models import Item, ItemOnStock, ItemTran, ItemForHardware, HardwareType, Hardware, Customer, Order
+
 
 class ItemAdmin(admin.ModelAdmin):
     # ListView
     ordering = ['item_id']
-    list_display = ['item_id', 'item_desc', 'price', 'safety_stock']
-    list_display_links = ['item_id', 'item_desc']
+    list_display = ['item_id', 'item_desc', 'price', 'safety_stock', 'in_use']
     list_per_page = 20
     search_fields = ['item_desc']
 
+
+class ItemOnStockAdmin(admin.ModelAdmin):
+    # ListView
+    ordering = ['item']
+    list_display = ['item', 'on_stock']
+    list_per_page = 20
+    search_fields = ['item']
+
+
+class ItemTranAdmin(admin.ModelAdmin):
+    # ListView
+    ordering = ['tran_datetime']
+    list_display = ['tran_type', 'item', 'tran_datetime']
+    list_per_page = 20
+    search_fields = ['item']
+
+
+class ItemForHardwareAdmin(admin.ModelAdmin):
+    # ListView
+    ordering = ['hardware_type']
+    list_display = ['hardware_type', 'item', 'quantity']
+    list_per_page = 20
+
+
+class HardwareTypeAdmin(admin.ModelAdmin):
+    # ListView
+    ordering = ['hardware_id']
+    list_display = ['hardware_id', 'type_desc', 'in_use']
+    list_per_page = 20
+
+
+class CustomerAdmin(admin.ModelAdmin):
+    # ListView
+    ordering = ['customer_id']
+    list_display = ['customer_id', 'customer_name', 'in_use']
+    list_per_page = 20
+
+
+class OrderAdmin(admin.ModelAdmin):
+    # ListView
+    ordering = ['order_id']
+    list_display = ['order_id', 'order_desc', 'customer']
+    list_per_page = 20
+
+
+class HardwareAdmin(admin.ModelAdmin):
+    # ListView
+    ordering = ['id']
+    list_display = ['mac', 'type', 'customer', 'location', 'order', 'in_use']
+    list_per_page = 20
+
+    class Meta:
+        model = Order
+
+    def customer(self, obj):
+        return obj.order.customer
+
+
 # Register your models here.
 admin.site.register(Item, ItemAdmin)
-admin.site.register(Item_on_stock)
-admin.site.register(Item_for_hardware)
-admin.site.register(Hardware_type)
+admin.site.register(ItemOnStock, ItemOnStockAdmin)
+admin.site.register(ItemTran, ItemTranAdmin)
+admin.site.register(ItemForHardware, ItemForHardwareAdmin)
+admin.site.register(HardwareType, HardwareTypeAdmin)
+admin.site.register(Customer, CustomerAdmin)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(Hardware, HardwareAdmin)
