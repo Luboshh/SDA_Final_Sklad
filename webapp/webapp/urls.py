@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from sklad import views
-from sklad import models
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sklad/hello',views.hello),
+    path('sklad/hello', views.hello),
+    path('', views.items),
 ]
