@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView, CreateView, DeleteView
 
-from sklad.models import Item
+from webapp.sklad.models import Item
 
 # Create your views here.
 # Create your views here.
