@@ -17,11 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from sklad import views
 
-
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sklad/hello', views.hello),
-    path('', views.items),
+    path('home/', views.home, name='home'),
+    path('upload/', views.upload, name='upload')
 ]

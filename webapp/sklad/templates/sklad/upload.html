@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <p>Form pro upload položky do items.</p>
+    <p>Form for upload items to all items.</p>
     <form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}

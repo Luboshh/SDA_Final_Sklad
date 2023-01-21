@@ -6,7 +6,7 @@ from django.db.models import Model
 
 
 class Item(models.Model):
-    item_id = models.BigAutoField(primary_key=True)
+    item_id = models.BigAutoField(primary_key=True, editable=False, db_index=True)
     item_desc = models.TextField(max_length=200)
     price = models.FloatField()
     safety_stock = models.IntegerField()
@@ -63,6 +63,7 @@ class Customer(models.Model):
 
 class Order(models.Model):
     order_id = models.BigAutoField(primary_key=True)
+    order_num = models.IntegerField()
     order_desc = models.TextField(max_length=200)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT, null=False)
 
