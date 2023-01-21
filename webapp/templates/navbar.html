@@ -1,16 +1,8 @@
 <ul>
-  <li class="last-child">
-        {{ user.username }}
+    <li class="first active">
+        <a href="{% url 'home' %}">Home page</a>
     </li>
-    <li class="last-child">
-        <a href="{% url 'password_change' %}">Password change</a>
+    <li>
+        <a href="{% url 'upload' %}">Upload</a>
     </li>
-    <li class="last-child">
-        <a href="{% url 'logout' %}">Logout</a>
-    </li>
-    {% else %}
-    <li class="last-child">
-        <a href="{% url 'login' %}">Login</a>
-    </li>
-    {% endif %}
-</ul>
+</ul><br class="clearfix"/>

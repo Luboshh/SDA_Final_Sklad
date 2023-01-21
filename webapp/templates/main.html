@@ -3,29 +3,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css"/>
-    <link href="http://fonts.googleapis.com/css?family=Bevan" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{% static 'styles/style.css' %}"/>
-    <title>Sklad</title>
+    <title>Stock manager</title>
 </head>
 <body>
 <div id="wrapper">
     <div id="header">
         <div id="logo">
-            <h1>Skladové zásoby</h1>
-        </div>
-        {% if user.is_authenticated %}
-        <div id="search">
-            <form action="{% url 'search' %}" method="get">
-                <div>
-                    <input class="text" name="q" size="32" maxlength="64">
-                </div>
-            </form>
+            <h1>Stock manager</h1>
         </div>
         <div id="menu">
             {% include 'navbar.html' %}
         </div>
-        {% endif %}
     </div>
     <div id="page">
         <div id="content">

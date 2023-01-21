@@ -7,7 +7,7 @@ from sklad.models import Item, ItemOnStock, ItemTran, ItemForHardware, HardwareT
 class ItemAdmin(admin.ModelAdmin):
     # ListView
     ordering = ['item_id']
-    list_display = ['item_id', 'item_desc', 'price', 'safety_stock', 'in_use']
+    list_display = ['item_desc', 'price', 'safety_stock', 'note', 'in_use']
     list_per_page = 20
     search_fields = ['item_desc']
 
@@ -38,21 +38,21 @@ class ItemForHardwareAdmin(admin.ModelAdmin):
 class HardwareTypeAdmin(admin.ModelAdmin):
     # ListView
     ordering = ['hardware_id']
-    list_display = ['hardware_id', 'type_desc', 'in_use']
+    list_display = ['type_desc', 'in_use']
     list_per_page = 20
 
 
 class CustomerAdmin(admin.ModelAdmin):
     # ListView
     ordering = ['customer_id']
-    list_display = ['customer_id', 'customer_name', 'in_use']
+    list_display = ['customer_name', 'in_use']
     list_per_page = 20
 
 
 class OrderAdmin(admin.ModelAdmin):
     # ListView
     ordering = ['order_id']
-    list_display = ['order_id', 'order_desc', 'customer']
+    list_display = ['order_num', 'order_desc', 'customer']
     list_per_page = 20
 
 
