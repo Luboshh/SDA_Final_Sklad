@@ -8,6 +8,7 @@ from django.views.generic import CreateView
 
 LOGGER = getLogger()
 
+
 class SignUpView(CreateView):
     template_name = 'accounts/signup.html'
     form_class = UserCreationForm
@@ -21,5 +22,5 @@ class SignUpView(CreateView):
         new_user = authenticate(username=username, password=password)
         if new_user is not None:
             login(self.request, new_user)
-        #LOGGER.warning(new_user)
+        # LOGGER.warning(new_user)
         return result

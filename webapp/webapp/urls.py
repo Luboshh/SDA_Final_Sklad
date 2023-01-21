@@ -14,7 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.urls import path
 
 from accounts import views as accounts_views
@@ -36,3 +39,8 @@ urlpatterns = [
     path('accounts/signup/', accounts_views.SignUpView.as_view(), name='signup'),
 
 ]
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        instance.groups.add(Group.objects.get(name='Participants'))

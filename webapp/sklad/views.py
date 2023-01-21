@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -19,6 +20,7 @@ def home(request):
     return render(request, template)
 
 
+
 def upload(request):
     if request.POST:
         form = UploadForm(request.POST)
@@ -29,3 +31,4 @@ def upload(request):
     template = "sklad/upload.html"
     context = {'form': UploadForm}
     return render(request, template, context)
+
