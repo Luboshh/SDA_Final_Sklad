@@ -6,8 +6,12 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView, CreateView, DeleteView
 from logging import getLogger
 
-from sklad.forms import UploadForm
-from sklad.models import Item, Hardware
+from sklad.forms import AddItemForm, ItemSearchForm
+from sklad.models import Item, Hardware, ItemTran
+
+from sklad.models import ItemTran
+
+from sklad.models import ItemOnStock
 
 LOGGER = getLogger()
 
@@ -17,13 +21,34 @@ def home(request):
     return render(request, template)
 
 
-def upload(request):
+def add_item(request):
+    search = ItemSearchForm(request.POST or None)
+    queryset = Item.objects.all()
+    template = "sklad/add_item.html"
+    quantity = ItemTran.quantity
+
     if request.POST:
-        form = UploadForm(request.POST)
+        form = AddItemForm(request.POST)  # TODO proc se zobrazuje 2x Item_desc namísto note
         print(request.POST)
         if form.is_valid():
             form.save()
-        return redirect(home)
-    template = "sklad/upload.html"
-    context = {'form': UploadForm}
+        # if Item.safety_stocks > ItemTran.quantity:  # TODO zatim nefukcni
+        #     print("Nutno naskladnit")
+        return redirect(add_item)
+
+    if request.method == 'POST':
+        queryset = Item.objects.filter(item_desc__icontains=search['item_desc'].value(),
+                                       )
+    context = {'form': AddItemForm,
+               "queryset": queryset,
+               "quantity": quantity,
+               "search": search,
+               }
     return render(request, template, context)
+
+# def safety_stock(request):
+#     queryset = Item.safety_stock
+#     template = "sklad/add_item.html"
+#     context = {"queryset": queryset}
+#     if safety_stock()
+#     return render(request, template, context=context)

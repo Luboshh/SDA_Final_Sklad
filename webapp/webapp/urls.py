@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from sklad import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.home, name='home'),
-    path('upload/', views.upload, name='upload')
-]
+    path('add_item/', views.add_item, name='add_item'),
+    ]
+
