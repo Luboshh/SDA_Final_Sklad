@@ -36,11 +36,9 @@ urlpatterns = [
     path('accounts/password_change/done/',
          PasswordChangeDoneView.as_view(template_name="registration/password_change_done.html"),
          name='password_change_done'),
-    path('accounts/signup/', accounts_views.SignUpView.as_view(), name='signup'),
+    #path('accounts_back/signup/', accounts_views.SignUpView.as_view(template_name="sklad/signup.html"), name='signup'),
+    path('accounts/signup/', accounts_views.signup_view, name='signup'),
 
 ]
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        instance.groups.add(Group.objects.get(name='Participants'))
+

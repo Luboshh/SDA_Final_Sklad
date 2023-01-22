@@ -1,9 +1,10 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template.context_processors import request
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView, CreateView, DeleteView
 from logging import getLogger
@@ -45,4 +46,7 @@ def form_valid(self, form):
     if new_user is not None:
         login(self.request, new_user)
         # LOGGER.warning(new_user)
-    return redirect(home)
+        return redirect(home)
+
+
+
