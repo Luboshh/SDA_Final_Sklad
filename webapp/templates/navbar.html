@@ -3,11 +3,13 @@
     <li class="first active">
         <a href="{% url 'home' %}">Home page</a>
     </li>
+    <li>
+        <a href="{% url 'add_item' %}">All Items</a>
+    </li>
     <li class="last-child">
         <a href="{% url 'login' %}">Login</a>
     </li>
-
-    {% if user.is_authenticated %}
+       {% if user.is_authenticated %}
     <li>
         <a href="{% url 'additem' %}">Settings</a>
     </li>
@@ -30,4 +32,3 @@
 
     {% endif %}
 
-</ul><br class="clearfix"/>

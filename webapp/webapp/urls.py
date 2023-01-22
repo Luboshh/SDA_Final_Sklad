@@ -24,10 +24,9 @@ from accounts import views as accounts_views
 
 from sklad import views as sklad_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', sklad_views.home, name='home'),
-    path('upload/', sklad_views.upload, name='upload'),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('accounts/logout/', LogoutView.as_view(), name='logout'),
     path('accounts/password_change/',
@@ -38,13 +37,15 @@ urlpatterns = [
          name='password_change_done'),
     #path('accounts_back/signup/', accounts_views.SignUpView.as_view(template_name="sklad/signup.html"), name='signup'),
     path('accounts/signup/', accounts_views.signup_view, name='signup'),
-    path('', views.home, name='home'),
-    path('additem/', views.add_item, name='additem'),
-    path('tostock/', views.to_stock, name='to_stock'),
-    path('tostock/<str:pk>/', views.update_tran, name='update_tran'),
-    path('unload/', views.unload_hardware, name='unload'),
-    path('unload/<str:pk>/', views.update_hardware, name='update_hardware'),
+    path('', sklad_views.home, name='home'),
+    path('additem/', sklad_views.add_item, name='additem'),
+    path('tostock/', sklad_views.to_stock, name='to_stock'),
+    path('tostock/<str:pk>/', sklad_views.update_tran, name='update_tran'),
+    path('unload/', sklad_views.unload_hardware, name='unload'),
+    path('unload/<str:pk>/', sklad_views.update_hardware, name='update_hardware'),
+    path('add_item/', sklad_views.add_item, name='add_item'),
+    path('home/', sklad_views.home, name='home'),
+    ]
 
-]
 
 

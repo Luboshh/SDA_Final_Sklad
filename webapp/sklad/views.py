@@ -10,8 +10,9 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView, CreateView, DeleteView
 from logging import getLogger
 
-from sklad.forms import AddItemForm, ToStockForm, TranUpdateForm, UnloadHardwareForm, HardwareUpdateForm
-from sklad.models import Item, Hardware, ItemTran, ItemForHardware
+from sklad.forms import AddItemForm, ToStockForm, TranUpdateForm, UnloadHardwareForm, HardwareUpdateForm, ItemSearchForm
+from sklad.models import Item, Hardware, ItemTran, ItemForHardware,ItemOnStock
+
 
 LOGGER = getLogger()
 
@@ -22,16 +23,36 @@ def home(request):
 
 
 def add_item(request):
+    search = ItemSearchForm(request.POST or None)
+    queryset = Item.objects.all()
+    template = "sklad/add_item.html"
+    quantity = ItemTran.quantity
+
     if request.POST:
-        form = AddItemForm(request.POST)
+        form = AddItemForm(request.POST)  # TODO proc se zobrazuje 2x Item_desc namísto note
         print(request.POST)
         if form.is_valid():
             form.save()
-        return redirect(home)
+        # if Item.safety_stocks > ItemTran.quantity:  # TODO zatim nefukcni
+        #     print("Nutno naskladnit")
+        return redirect(add_item)
 
-    template = "sklad/upload.html"
-    context = {'form': UploadForm}
+    if request.method == 'POST':
+        queryset = Item.objects.filter(item_desc__icontains=search['item_desc'].value(),
+                                       )
+    context = {'form': AddItemForm,
+               "queryset": queryset,
+               "quantity": quantity,
+               "search": search,
+               }
     return render(request, template, context)
+
+# def safety_stock(request):
+#     queryset = Item.safety_stock
+#     template = "sklad/add_item.html"
+#     context = {"queryset": queryset}
+#     if safety_stock()
+#     return render(request, template, context=context)
 
 
 class SignUpView(CreateView):
@@ -135,4 +156,5 @@ def update_hardware(request, pk):
         'hardware': hardware,
     }
     return render(request, "sklad/update_hardware.html", context)
+
 

@@ -16,7 +16,7 @@ LOGGER = getLogger()
 class SignUpView(CreateView):
     template_name = 'accounts_back/signup.html'
     form_class = UserCreationForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy(home)
 
     def form_valid(self, form):
         result = super().form_valid(form)
