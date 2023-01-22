@@ -20,5 +20,7 @@ from sklad import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.home, name='home'),
-    path('upload/', views.upload, name='upload')
+    path('additem/', views.add_item, name='additem'),
+    path('tostock/', views.to_stock, name='to_stock'),
+    path('tostock/<str:pk>/', views.update_tran, name='update_tran'),
 ]

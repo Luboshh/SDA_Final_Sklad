@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main.html' %}
+
+{% block content %}
+    <p>Form for load items to stock.</p>
+    <form method="POST" action="{% url 'to_stock' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button>Submit</button>
+    </form>
+    <br>
+    <div id="display_table">
+        <table class='table'>
+            <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Order</th>
+                <th>Created</th>
+            </tr>
+            </thead>
+            {% for instance in queryset %}
+                <tr>
+                    <td><a href="{% url 'update_tran' instance.id %}">{{ instance.item }}</a></td>
+                    <td>{{ instance.quantity }}</td>
+                    <td>{{ instance.order }}</td>
+                    <td>{{ instance.tran_created }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+{% endblock %}

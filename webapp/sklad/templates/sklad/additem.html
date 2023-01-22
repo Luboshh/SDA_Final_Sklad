@@ -2,9 +2,9 @@
 
 {% block content %}
     <p>Form for upload items to all items.</p>
-    <form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'additem' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
-        <button>Submit</button>
+    <button>Submit</button>
     </form>
 {% endblock %}

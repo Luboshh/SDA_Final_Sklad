@@ -25,14 +25,6 @@ class ItemOnStock(models.Model):
         return self.item
 
 
-class ItemTran(models.Model):
-    TranType = models.TextChoices('TranID', 'in out')
-    tran_type = models.CharField(blank=False, choices=TranType.choices, max_length=20)
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.FloatField()
-    tran_datetime = models.DateTimeField()
-
-
 class HardwareType(models.Model):
     hardware_id = models.BigAutoField(primary_key=True)
     type_desc = models.TextField(max_length=200)
@@ -81,3 +73,13 @@ class Hardware(models.Model):
 
     def __str__(self):
         return self.mac
+
+
+class ItemTran(models.Model):
+    # TranType = models.TextChoices('TranID', 'in out')
+    # tran_type = models.CharField(blank=False, choices=TranType.choices, max_length=20)
+    id = models.BigAutoField(primary_key=True)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    order = models.ForeignKey(Order, on_delete=models.PROTECT, null=True)
+    tran_created = models.DateTimeField(auto_now_add=True)

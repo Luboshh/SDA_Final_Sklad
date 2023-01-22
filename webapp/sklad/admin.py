@@ -22,9 +22,9 @@ class ItemOnStockAdmin(admin.ModelAdmin):
 
 class ItemTranAdmin(admin.ModelAdmin):
     # ListView
-    ordering = ['tran_datetime']
-    list_display = ['tran_type', 'item', 'tran_datetime']
-    list_per_page = 20
+    ordering = ['tran_created']
+    list_display = ['id', 'item', 'quantity', 'tran_created']
+    list_per_page = 50
     search_fields = ['item']
 
 
