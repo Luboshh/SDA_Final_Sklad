@@ -38,6 +38,12 @@ urlpatterns = [
          name='password_change_done'),
     #path('accounts_back/signup/', accounts_views.SignUpView.as_view(template_name="sklad/signup.html"), name='signup'),
     path('accounts/signup/', accounts_views.signup_view, name='signup'),
+    path('', views.home, name='home'),
+    path('additem/', views.add_item, name='additem'),
+    path('tostock/', views.to_stock, name='to_stock'),
+    path('tostock/<str:pk>/', views.update_tran, name='update_tran'),
+    path('unload/', views.unload_hardware, name='unload'),
+    path('unload/<str:pk>/', views.update_hardware, name='update_hardware'),
 
 ]
 

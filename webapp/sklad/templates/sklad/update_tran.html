@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <p>Form for load items to stock.</p>
+    <br>
+    <form method="POST" action="{% url 'update_tran' item.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button>Submit</button>
+    </form>
+    <br>
+{% endblock %}
