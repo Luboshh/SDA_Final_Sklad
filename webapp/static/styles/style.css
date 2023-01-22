@@ -16,7 +16,7 @@ Released   : 20120705
 
 a {
 	text-decoration: underline;
-	color: #e8e8e8;
+	color: black;
 }
 
 a:hover {
@@ -308,7 +308,7 @@ ul {
 
 /*Align the title to the center of the page*/
 .table{
-	font-size: 13px;
+	font-size: 15px;
 	text-align: center;
 	width: 95%;
 	margin: auto;
@@ -317,15 +317,15 @@ ul {
 
 /*Make alternating colors for the table rows*/
 .table tr:nth-child(odd){
-	background: #B8CAE4
+	background: white;
 }
 
 .table tr:nth-child(even){
-	background: #dae5f4
+	background: whitesmoke;
 }
 
 th {
-  background-color: #337ab7;
+  background-color: black;
   color: white;
 }
 

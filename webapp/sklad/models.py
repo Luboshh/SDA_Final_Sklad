@@ -70,6 +70,10 @@ class Hardware(models.Model):
     location = models.TextField(max_length=200)
     order = models.ForeignKey(Order, on_delete=models.PROTECT, null=False)
     in_use = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created']
 
     def __str__(self):
         return self.mac
@@ -83,3 +87,6 @@ class ItemTran(models.Model):
     quantity = models.IntegerField()
     order = models.ForeignKey(Order, on_delete=models.PROTECT, null=True)
     tran_created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-tran_created']

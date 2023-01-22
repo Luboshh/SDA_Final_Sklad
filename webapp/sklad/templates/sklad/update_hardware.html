@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <p>Update hardware</p>
+    <br>
+    <form method="POST" action="{% url 'update_hardware' hardware.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button>Submit</button>
+    </form>
+    <br>
+{% endblock %}
