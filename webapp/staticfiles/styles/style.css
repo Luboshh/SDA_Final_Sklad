@@ -1,0 +1,396 @@
+/*
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Anodized
+Description: A two-column, fixed-width design with a dark color scheme.
+Version    : 1.0
+Released   : 20120705
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: underline;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+body {
+	font-size: 12pt;
+	line-height: 1em;
+	font-family: "Source Code Pro";
+	background: white;
+	color: black;
+}
+
+button {
+	padding: 10px;
+	font-size: 12pt;
+}
+
+strong {
+	color: #ffffff;
+}
+
+br.clearfix {
+	clear: both;
+}
+
+h1,h2,h3,h4 {
+	text-transform: uppercase;
+	font-weight: normal;
+	color: black;
+	font-family: "Source Code Pro"
+}
+
+h2,h3,h4 {
+	margin-bottom: 20px;
+	font-family: "Source Code Pro";
+	color: #ffffff;
+}
+
+h2 {
+	font-size: 1.8em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+img.left {
+	float: left;
+	margin: 8px 20px 20px 0;
+}
+
+img.top {
+	margin: 8px 0 20px 0;
+}
+
+p {
+	margin-bottom: 1.25em;
+}
+
+ul {
+	margin-bottom: 1.25em;
+}
+
+ul {
+	list-style: none;
+}
+
+.image-list {
+	list-style: none;
+}
+
+.image-list li {
+	clear: both;
+}
+
+.helptext {
+	font-size: 8pt;
+	font-style: italic;
+}
+
+.last-child
+{
+    float:right;
+
+}
+
+.message {
+	width: 80%;
+	padding: 10px;
+	color: black;
+	background: #9ea3a3;
+	border-radius: 15px;
+  	border: 2px solid black;
+}
+
+.room__message {
+  	background: white;
+	border-radius: 15px;
+  	border: 2px solid black;
+  	width: 100%;
+}
+
+.room__message > form > input {
+	resize: none;
+	border: none;
+	outline: none;
+	padding: 10px;
+	height: 4.5rem;
+	width: 100%;
+}
+
+.box {
+	overflow: hidden;
+	margin: 2px 2px 2px 2px;
+}
+
+#box-left {
+	width: 312px;
+	overflow: hidden;
+	float: left;
+}
+
+#box-right {
+	width: 312px;
+	overflow: hidden;
+	margin: 0 0 0 336px;
+}
+
+#content {
+	width: 100%;
+	float: left;
+	padding: 0;
+}
+
+#footer {
+	padding: 40px 0 95px 0;
+	text-align: center;
+	color: #606060;
+}
+
+#footer a {
+	color: #707070;
+}
+
+#header {
+	position: relative;
+	padding: 28px;
+	height: 130px;
+}
+
+#logo {
+	position: absolute;
+	top: 0;
+	left: 28px;
+	height: 130px;
+	line-height: 130px;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+#logo h1 {
+	font-size: 3em;
+	font-family: "Source Code Pro";
+}
+
+#page {
+	position: relative;
+	padding: 50px 28px 0px 28px;
+	width: 922px;
+	background: rgba(65, 70, 70, 0.4);
+	border: solid 1px #474949;
+	border-top: 0;
+}
+
+#page ul li {
+	padding: 12px 0 12px 0;
+	border-top: solid 1px #606060;
+}
+
+#page ul li.first {
+	padding-top: 0;
+	border-top: 0;
+}
+
+#page-bottom {
+	position: relative;
+	padding: 50px 28px 0px 28px;
+	width: 922px;
+	background: rgba(15, 20, 20, 0.35);
+	color: #999;
+	border: solid 1px #3f3f3f;
+	border-top: 0;
+}
+
+#page-bottom ul li {
+	padding: 12px 0 12px 0;
+	border-top: solid 1px #292929;
+}
+
+#page-bottom ul li.first {
+	padding-top: 0;
+	border-top: 0;
+}
+
+#page-bottom ul li {
+	border-top: solid 1px #404040;
+}
+
+#page-bottom-content {
+	width: 100%;
+	float: left;
+}
+
+#page-bottom-sidebar {
+	width: 250px;
+	margin: 0 0 0 674px;
+}
+
+#menu {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 58px;
+	line-height: 60px;
+	padding: 0 20px 0 20px;
+	width: 938px;
+	margin: 0 0 0 0;
+	background: #e16060;
+	border: solid 1px #f17070;
+}
+
+#menu a {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #ffffff;
+	padding: 8px 12px 8px 12px;
+	border: solid 1px #e16060;
+}
+
+#menu ul {
+	list-style: none;
+}
+
+#menu ul li {
+	display: inline;
+	padding: 0 8px 0 8px;
+	position: relative;
+}
+
+#menu ul li.first {
+	padding-left: 0;
+}
+
+#menu ul li.active a {
+	background: white;
+	border: solid 1px #C64545;
+}
+
+#menu ul li:hover a {
+	background: #f17070;
+	border: solid 1px #f87777;
+}
+
+#menu ul li ul {
+	background: white;
+	display: none;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	z-index: 10;
+}
+
+#menu ul li:hover ul {
+	display: block;
+}
+
+#menu ul li ul li {
+	display: block;
+	background: white;
+}
+
+#menu ul li ul li a{
+	color: black;
+}
+
+#user_left {
+	float: right;
+}
+
+#wrapper {
+	position: relative;
+	width: 980px;
+	margin: 68px auto 0 auto;
+}
+
+#search {
+	position: absolute;
+	top: 0;
+	right: 28px;
+	height: 130px;
+	line-height: 130px;
+}
+
+#search input.text {
+	padding: 10px 40px 10px 10px;
+	background: rgba(15, 20, 20, 0.4) url(/static/images/search.png) top right no-repeat;
+	color: #c7c8c8;
+	width: 200px;
+	border: solid 1px #3c3c3c;
+}
+
+/*Align the title to the center of the page*/
+.table{
+	font-size: 15px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+}
+
+/*Make alternating colors for the table rows*/
+.table tr:nth-child(odd){
+	background: white;
+}
+
+.table tr:nth-child(even){
+	background: whitesmoke;
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+
+.display_table{
+	border-bottom-right-radius: 20px;
+	/*border-bottom-left-radius: 20px;*/
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 20px;
+	box-shadow: 12px 12px 20px 6px #2e6da4;
+}
+
+/* Add a black background color to the top navigation */
+.topnav ul li {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+
