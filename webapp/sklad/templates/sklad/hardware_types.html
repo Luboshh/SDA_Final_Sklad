@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <p>Form for unload new hardware.</p>
-    <form method="POST" action="{% url 'unload' %}" enctype="multipart/form-data">
+    <p>Create new type:</p>
+    <form method="POST" action="{% url 'hardware_types' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <table>{{ form }}</table>
         <br>
@@ -11,23 +11,18 @@
     <br>
     <hr class="dotted">
     <br>
+    <p>Current hardware types:</p>
     <div id="display_table">
         <table class='table'>
             <thead>
             <tr>
-                <th>MAC</th>
                 <th>Type</th>
-                <th>Location</th>
-                <th>Order</th>
                 <th>In use</th>
             </tr>
             </thead>
             {% for instance in queryset %}
                 <tr>
-                    <td><a href="{% url 'update_hardware' instance.id %}">{{ instance.mac }}</a></td>
-                    <td>{{ instance.type }}</td>
-                    <td>{{ instance.location }}</td>
-                    <td>{{ instance.order }}</td>
+                    <td><a href="{% url 'update_hardwaretype' instance.hardware_id %}">{{ instance.type_desc }}</a></td>
                     <td>{{ instance.in_use }}</td>
                 </tr>
             {% endfor %}

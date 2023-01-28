@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <p>Add new order:</p>
+    <form method="POST" action="{% url 'orders' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <br>
+        <button>Submit</button>
+    </form>
+    <br>
+    <hr class="dotted">
+    <br>
+    <p>All orders:</p>
+    <div id="display_table">
+        <table class='table'>
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Description</th>
+                <th>Customer</th>
+            </tr>
+            </thead>
+            {% for instance in queryset %}
+                <tr>
+                    <td><a href="{% url 'update_order' instance.order_id %}"</a>{{ instance.order_num }}</td>
+                    <td>{{ instance.order_desc }}</td>
+                    <td>{{ instance.customer }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+{% endblock %}

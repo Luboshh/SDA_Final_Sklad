@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <p>Update item:</p>
+    <br>
+    <form method="POST" action="{% url 'update_item' item.pk %}" enctype= "multipart/form-data">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <br>
+        <button>Submit</button>
+    </form>
+    <br>
+
+{% endblock %}

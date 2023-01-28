@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <p>Update hardware type</p>
+    <form method="POST" action="{% url 'update_hardwaretype' hardware.hardware_id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <br>
+        <button>Submit</button>
+    </form>
+    <br>
+    <p>
+        <b>Can update items for hardware <a href="{% url 'items_for_hardwware' hardware.hardware_id %}">here.</a></b>
+    </p>
+    <br>
+{% endblock %}

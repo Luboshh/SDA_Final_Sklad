@@ -6,7 +6,7 @@ from django.db.models import Model
 
 
 class Item(models.Model):
-    item_id = models.BigAutoField(primary_key=True, editable=False, db_index=True)
+    item_id = models.BigAutoField(primary_key=True)
     item_desc = models.TextField(max_length=200)
     price = models.FloatField()
     safety_stock = models.IntegerField()
@@ -21,14 +21,14 @@ class ItemOnStock(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     on_stock = models.FloatField()
 
-    def __str__(self):
-        return self.item
-
 
 class HardwareType(models.Model):
     hardware_id = models.BigAutoField(primary_key=True)
     type_desc = models.TextField(max_length=200)
     in_use = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['-in_use']
 
     def __str__(self):
         return self.type_desc
@@ -42,6 +42,11 @@ class ItemForHardware(models.Model):
     hardware_type = models.ForeignKey(HardwareType, on_delete=models.PROTECT, null=False)
     item = models.ForeignKey(Item, on_delete=models.PROTECT, null=False)
     quantity = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ['-created']
 
 
 class Customer(models.Model):
@@ -58,6 +63,9 @@ class Order(models.Model):
     order_num = models.IntegerField()
     order_desc = models.TextField(max_length=200)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT, null=False)
+
+    class Meta:
+        ordering = ['-order_num']
 
     def __str__(self):
         return self.order_desc

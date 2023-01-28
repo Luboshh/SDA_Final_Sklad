@@ -3,7 +3,7 @@ from logging import getLogger
 
 from django.core.exceptions import ValidationError
 from django.forms import Form, Textarea, ModelForm
-from sklad.models import Item, ItemTran, Order, Hardware, HardwareType
+from sklad.models import Item, ItemTran, Order, Hardware, HardwareType, ItemForHardware, Customer
 
 LOGGER = getLogger()
 
@@ -25,18 +25,17 @@ class AddItemForm(ModelForm):
                 raise forms.ValidationError('This field is required')
             return item_desc
 
-class QuantityForm(ModelForm):
-        quantity = forms.FloatField()
 
-        class Meta:
-            model = ItemTran
-            fields = ['quantity']
+class ItemUpdateForm(ModelForm):
+    item_desc = forms.CharField(label='Item desc', max_length=50, widget=forms.TextInput)
+    price = forms.FloatField()
+    safety_stock = forms.IntegerField()
+    note = forms.CharField(label='Note', max_length=50, widget=forms.TextInput, required=False)
+    in_use = forms.BooleanField(widget=forms.CheckboxInput, initial=True)
 
-class ItemSearchForm(ModelForm):
-        class Meta:
-            model = Item
-            fields = ['item_desc']
-
+    class Meta:
+        model = Item
+        fields = ['item_desc', 'price', 'safety_stock', 'note', 'in_use']
 
 
 class ToStockForm(ModelForm):
@@ -68,8 +67,74 @@ class UnloadHardwareForm(ModelForm):
 
 
 class HardwareUpdateForm(ModelForm):
+    mac = forms.CharField(label='Location', max_length=50, widget=forms.TextInput, required=False)
+    in_use = forms.BooleanField(label='in_use', required=False)
+    location = forms.CharField(label='Location', max_length=50, widget=forms.TextInput, required=False)
+    in_use = forms.BooleanField(required=False, widget=forms.CheckboxInput)
 
     class Meta:
         model = Hardware
         fields = ['mac', 'type', 'location', 'order', 'in_use']
 
+
+class HardwareTypesForm(ModelForm):
+    type_desc = forms.CharField(label='Type description', max_length=50, widget=forms.TextInput, required=False)
+
+    class Meta:
+        model = HardwareType
+        fields = ['type_desc']
+
+
+class UpdateHardwareTypesForm(ModelForm):
+    type_desc = forms.CharField(label='Type description', max_length=50, widget=forms.TextInput, required=False)
+    in_use = forms.BooleanField(required=False, widget=forms.CheckboxInput)
+
+    class Meta:
+        model = HardwareType
+        fields = ['type_desc', 'in_use']
+
+
+class ItemForHardwareForm(ModelForm):
+    item = forms.ModelChoiceField(Item.objects.all())
+    quantity = forms.IntegerField(required=True)
+
+    class Meta:
+        model = ItemForHardware
+        fields = ['item', 'quantity']
+
+
+class OrdersForm(ModelForm):
+    order_num = forms.IntegerField(label='Number', required=True)
+    order_desc = forms.CharField(label='Description', required=True)
+    customer = forms.ModelChoiceField(Customer.objects.all(), label='Custommer')
+
+    class Meta:
+        model = Order
+        fields = ['order_num', 'order_desc', 'customer']
+
+
+class UpdateOrderForm(ModelForm):
+    order_desc = forms.CharField(label='Description', required=True)
+    customer = forms.ModelChoiceField(Customer.objects.all(), label='Custommer')
+
+    class Meta:
+        model = Order
+        fields = ['order_desc', 'customer']
+
+
+class CustomerForm(ModelForm):
+    customer_name = forms.CharField(label='Customer', required=True)
+    in_use = forms.BooleanField(required=False, widget=forms.CheckboxInput)
+
+    class Meta:
+        model = Customer
+        fields = ['customer_name', 'in_use']
+
+
+class UpdateCustomerForm(ModelForm):
+    customer_name = forms.CharField(label='Customer', required=True)
+    in_use = forms.BooleanField(required=False, widget=forms.CheckboxInput)
+
+    class Meta:
+        model = Customer
+        fields = ['customer_name', 'in_use']

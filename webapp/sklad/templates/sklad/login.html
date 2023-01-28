@@ -1,15 +1,19 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h1>Login</h1>
-    <div class="box">
+    <div>
+        <h3>Login</h3>
+    </div>
+    <br>
+    <hr class="dotted">
+    <div>
         <form method="POST">
             {% csrf_token %}
             <table>{{ form.as_table }}</table>
             <button type="submit">Login</button>
         </form>
     </div>
-    <div class="box">
+    <div>
         You can <a href="{% url 'signup' %}">signup</a> for free.
     </div>
 {% endblock %}

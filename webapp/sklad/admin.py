@@ -38,7 +38,7 @@ class ItemForHardwareAdmin(admin.ModelAdmin):
 class HardwareTypeAdmin(admin.ModelAdmin):
     # ListView
     ordering = ['hardware_id']
-    list_display = ['type_desc', 'in_use']
+    list_display = ['hardware_id', 'type_desc', 'in_use']
     list_per_page = 20
 
 
@@ -59,7 +59,7 @@ class OrderAdmin(admin.ModelAdmin):
 class HardwareAdmin(admin.ModelAdmin):
     # ListView
     ordering = ['id']
-    list_display = ['mac', 'type', 'customer', 'location', 'order', 'in_use']
+    list_display = ['id', 'mac', 'type', 'customer', 'location', 'order', 'in_use']
     list_per_page = 20
 
     class Meta:

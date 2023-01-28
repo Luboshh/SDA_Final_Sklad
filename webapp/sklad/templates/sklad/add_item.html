@@ -4,37 +4,60 @@
 All items
 {% endblock %}
 {% block content %}
-<p>Form for add items to all items.</p>
+<p>Add item:</p>
     <form method="POST" action="{% url 'add_item' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
+        <table>{{ form }}</table>
+        <br>
         <button>Submit</button>
+        <br>
     </form>
-<div style="text-align: left">
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{search}}
-            <input type="submit" value="Search"/>
-    </form>
-</div>
+<p>
+    <hr class="dotted">
+    <br>
 <div id="display_table">
+    <p>All item:</p>
     <table class="table">
         <thead>
         <tr>
-            <th>Item id</th>
+
             <th>Description</th>
             <th>Quantity</th>
-            <th>Min stock warning</th>
+            <th>Price</th>
+            <th>Safety Stock</th>
+            <th>In Use</th>
+
         </tr>
         </thead>
        {% for instance in queryset %}
         <tr>
-            <td>{{instance.item_id}}</td>
-            <td>{{instance.item_desc}}</td>
-            <td>{{instance.quantity}}</td>
+                <td><a href="{% url 'update_item' instance.item_id %}">{{instance.item_desc}}</a></td>
+
+                {% with count=quantity|get_item:instance.item_id %}
+                    {% if count %}
+                        <td>
+                          {% if count <= instance.safety_stock %}
+                          <div style="background-color: orange;">{{ count }}</div>
+                          {% else %}{{count}}
+                          {% endif %}
+                        </td>
+                        </td>
+                    {% else %}
+                        <td>
+                          {% if 0 <= instance.safety_stock %}
+                          <div style="background-color: orange;">{{ 0 }}</div>
+                          {% else %}{{ 0 }}
+                          {% endif %}
+                        </td>
+                    {% endif %}
+                {% endwith %}
+                <td>{{instance.price}}</td>
+                <td>{{instance.safety_stock}}</td>
+                <td>{{instance.in_use}}</td>
+
         </tr>
         {% endfor %}
-
     </table>
+    <br>
 </div>
 {% endblock %}

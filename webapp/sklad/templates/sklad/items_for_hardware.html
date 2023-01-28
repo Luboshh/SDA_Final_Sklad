@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <p>Load item to stock:</p>
-    <form method="POST" action="{% url 'to_stock' %}" enctype="multipart/form-data">
+    <p>Add new item for hardware: {{ hardware.hardware_type }} </p>
+    <form method="POST" action="{% url 'items_for_hardwware' hardware.hardware_id %}" enctype="multipart/form-data">
         {% csrf_token %}
         <table>{{ form }}</table>
         <br>
@@ -11,23 +11,21 @@
     <br>
     <hr class="dotted">
     <br>
-    <p>Items transactions:</p>
+    <p>Items for hardware:</p>
     <div id="display_table">
         <table class='table'>
             <thead>
             <tr>
+                <th>Hardware type</th>
                 <th>Item</th>
                 <th>Quantity</th>
-                <th>Order</th>
-                <th>Created</th>
             </tr>
             </thead>
             {% for instance in queryset %}
                 <tr>
-                    <td><a href="{% url 'update_tran' instance.id %}">{{ instance.item }}</a></td>
+                    <td>{{ instance.hardware_type }}</td>
+                    <td>{{ instance.item }}</td>
                     <td>{{ instance.quantity }}</td>
-                    <td>{{ instance.order }}</td>
-                    <td>{{ instance.tran_created }}</td>
                 </tr>
             {% endfor %}
         </table>
