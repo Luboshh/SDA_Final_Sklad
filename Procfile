@@ -1,1 +1,1 @@
-web: cd webapp && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn myproject.wsgi
+web: cd webapp && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn sklad.wsgi
