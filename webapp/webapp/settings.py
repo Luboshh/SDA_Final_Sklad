@@ -148,5 +148,5 @@ DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['https://sdafinalsklad-production.up.railway.app/', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://sdafinalsklad-production.up.railway.app/']
+ALLOWED_HOSTS = ['sdafinalsklad-production.up.railway.app', '127.0.0.1', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['sdafinalsklad-production.up.railway.app']
