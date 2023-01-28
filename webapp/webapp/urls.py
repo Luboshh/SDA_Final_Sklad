@@ -38,13 +38,21 @@ urlpatterns = [
     #path('accounts_back/signup/', accounts_views.SignUpView.as_view(template_name="sklad/signup.html"), name='signup'),
     path('accounts/signup/', accounts_views.signup_view, name='signup'),
     path('', sklad_views.home, name='home'),
-    path('additem/', sklad_views.add_item, name='additem'),
+    path('add_item/', sklad_views.add_item, name='add_item'),
+    path('add_item/<str:pk>/', sklad_views.update_item, name='update_item'),
     path('tostock/', sklad_views.to_stock, name='to_stock'),
     path('tostock/<str:pk>/', sklad_views.update_tran, name='update_tran'),
     path('unload/', sklad_views.unload_hardware, name='unload'),
     path('unload/<str:pk>/', sklad_views.update_hardware, name='update_hardware'),
     path('add_item/', sklad_views.add_item, name='add_item'),
     path('home/', sklad_views.home, name='home'),
+    path('hardwaretypes/', sklad_views.hardware_types, name='hardware_types'),
+    path('hardwaretypes/<str:pk>/', sklad_views.update_hardware_type, name='update_hardwaretype'),
+    path('itemsforhardware/<str:pk>/', sklad_views.item_for_hardware, name='items_for_hardwware'),
+    path('orders/', sklad_views.orders, name='orders'),
+    path('orders/<str:pk>/', sklad_views.update_order, name='update_order'),
+    path('customers/', sklad_views.customers, name='customers'),
+    path('customers/<str:pk>/', sklad_views.update_customer, name='update_customer'),
     ]
 
 

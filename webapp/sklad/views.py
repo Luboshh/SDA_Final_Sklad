@@ -216,7 +216,6 @@ def item_for_hardware(request, pk):
             quantity = instance.quantity
             tran = ItemForHardware(hardware_type=hardware, item=item, quantity=quantity)
             tran.save()
-        return redirect(hardware_types)
 
     context = {
         "queryset": queryset,

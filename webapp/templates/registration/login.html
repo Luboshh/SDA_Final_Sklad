@@ -2,13 +2,18 @@
 
 {% block content %}
     <h1>Login</h1>
-    <div class="box">
+    <br>
+    <hr class="dotted">
+    <br>
+    <div>
         <form method="POST">
             {% csrf_token %}
             <table>{{ form.as_table }}</table>
+            <br>
             <button type="submit">Login</button>
         </form>
     </div>
+    <br>
     <div class="box">
         You can <a href="{% url 'signup' %}">signup</a> for free.
     </div>
