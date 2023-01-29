@@ -56,9 +56,9 @@ class TranUpdateForm(ModelForm):
 
 
 class UnloadHardwareForm(ModelForm):
-    type = forms.ModelChoiceField(HardwareType.objects.all(), label='Box type')
+    type = forms.ModelChoiceField(HardwareType.objects.filter(in_use=True), label='Box type')
     mac = forms.CharField(label='Box mac', max_length=50, widget=forms.TextInput)
-    order = forms.ModelChoiceField(Order.objects.all(), label='Custommer order')
+    order = forms.ModelChoiceField(Order.objects.all(), label='Cumer order')
     location = forms.CharField(label='Location', max_length=50, widget=forms.TextInput, required=False)
 
     class Meta:
